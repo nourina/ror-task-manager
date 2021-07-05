@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TaskManager</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="bg-light">
+    <div class="container pt-5">
+      <div class="card-title d-flex justify-content-between">
+      <% if user_signed_in? %>
+         <span class="text-dark"> Hello, <%= current_user.email.split('@').first.camelcase %> </span>
+          <%= link_to "Sign out", destroy_user_session_path, :method => 'delete', class: 'btn btn-danger' %> 
+      <% end %> 
+    </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p> 
+      <%= yield %>
+    </div>
+  </body>
+</html>
