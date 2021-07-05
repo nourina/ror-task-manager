@@ -1,0 +1,31 @@
+<div class="card">
+  <div class="card-header">
+    <h2 class="card-title d-flex justify-content-between mb-4">
+      <span> Tasks </span>
+      <%= link_to 'New Task', new_task_path, class: 'btn btn-primary' %>
+    </h2>
+     <% @tasks.each do |task| %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <span class="badge alert-<%= task.badge_color %> mb-3"> <%= task.status %></span>
+              <div>
+                <%= link_to 'Edit', edit_task_path(task), class: 'btn btn-secondary btn-sm' %> 
+                <%= link_to 'Destroy', task, method: :delete, class: 'btn btn-dark btn-sm', data: {confirm: 'Are you sure?'} %>
+              </div>
+            </div>
+            
+            <h5 class="card-title  mb-2">
+              <span><%= task.name %></span>
+            </h5> 
+            <p> <%= task.description %></p>
+            <small class="text-muted"><%= task.deadline %></small>
+          </div>
+        </div>
+        <% end %> 
+  </div>
+</div>
+
+<br>
+
+
